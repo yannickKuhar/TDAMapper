@@ -16,7 +16,11 @@ def filter_x(point):
 def main(args):
     # data = make_circles(100, shuffle=True)[0]
 
-    data = ReadPlyFile('data/bun000.ply', 1.0).get_data()
+    # data = ReadPlyFile('data/bun000.ply', 1.0).get_data()
+    # data = ReadPlyFile('data/drill_1.6mm_0_cyb.ply', 1.0).get_data()
+    data = ReadPlyFile('data/dragonStandRight_0.ply', 1.0).get_data()
+
+    print(len(data))
 
     def filter_norm(point):
         return np.linalg.norm(point - np.array(data).min(0))
