@@ -1,19 +1,18 @@
 import sys
+from sklearn.datasets import make_circles
+from Mapper import Mapper
 
-from sklearn.datasets import load_iris
-from Clustering import Clustering
+
+def filter_x(point):
+    return point[0]
 
 
 def main(args):
-	data = load_iris()	
-
-	c = Clustering(data['data'])
-
-	print(c.kmeans(3))
-	print(c.GMM(3))
-	print(c.hierarchical(3))
-	print(c.DBSCAN(0.5, 7)) 
+    data = make_circles(100, shuffle=True)[0]
+    mapper = Mapper(data, resolution=0.2, overlap=0.4, cluster_alg='kmeans', max_clusters=5, filter=filter_x)
+    graph = mapper.run()
+    print(graph)
 
 
 if __name__ == '__main__':
-	main(sys.argv)
+    main(sys.argv)
