@@ -5,6 +5,7 @@ from Clustering import Clustering
 
 class Mapper:
     def __init__(self, data, resolution, overlap, cluster_alg, max_clusters, filter):
+
         self.data = data
         self.resolution = resolution
         self.overlap = overlap
@@ -74,4 +75,3 @@ class Mapper:
                 nodes.append(g)
 
         return self.make_graph(nodes)
-

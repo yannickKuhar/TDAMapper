@@ -22,4 +22,4 @@ class ReadPlyFile:
         for i in range(len(data['vertex']['x'])):
             S.append((data['vertex']['x'][i], data['vertex']['y'][i], data['vertex']['z'][i]))
 
-        return self.sample_data(np.array(S))
+        return np.array(S)

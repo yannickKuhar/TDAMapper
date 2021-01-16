@@ -1,7 +1,11 @@
 import sys
+import time
+import numpy as np
+
 
 from Mapper import Mapper
 from ReadPlyFile import ReadPlyFile
+from Visualization import Visualization
 from sklearn.datasets import make_circles
 
 
@@ -10,16 +14,21 @@ def filter_x(point):
 
 
 def main(args):
-    data = make_circles(100, shuffle=True)[0]
+    # data = make_circles(100, shuffle=True)[0]
 
-    # print(data)
+    data = ReadPlyFile('data/bun000.ply', 1.0).get_data()
 
-    data = ReadPlyFile('data/bun000.ply', 0.02).get_data()
+    def filter_norm(point):
+        return np.linalg.norm(point - np.array(data).min(0))
 
-    mapper = Mapper(data, resolution=0.2, overlap=0.4, cluster_alg='kmeans', max_clusters=5, filter=filter_x)
+    mapper = Mapper(data, resolution=0.2, overlap=0.4, cluster_alg='kmeans', max_clusters=5, filter=filter_norm)
     graph = mapper.run()
-    print(graph)
+    viz = Visualization(graph)
+    viz.draw()
 
 
 if __name__ == '__main__':
+    start_time = time.time()
     main(sys.argv)
+    end_time = time.time()
+    print('%s seconds' % round(end_time - start_time, 3))
