@@ -7,6 +7,7 @@ class Visualization:
         G = nx.Graph()
 
         for node in graph:
+            G.add_node(node)
             for edge in graph[node]:
                 G.add_edge(node, edge)
 

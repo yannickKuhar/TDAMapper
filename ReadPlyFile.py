@@ -4,12 +4,11 @@ from plyfile import PlyData
 
 
 class ReadPlyFile:
-    def __init__(self, path, percentage):
+    def __init__(self, path):
         self.path = path
-        self.percentage = percentage
 
-    def sample_data(self, X):
-            idxs = np.random.choice(len(X), int(len(X) * self.percentage))
+    def sample_data(self, X, percentage):
+            idxs = np.random.choice(len(X), int(len(X) * percentage))
             sample = X[idxs]
 
             return sample
