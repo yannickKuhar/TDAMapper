@@ -7,10 +7,7 @@ from Mapper import Mapper
 from ReadPlyFile import ReadPlyFile
 from Visualization import Visualization
 from sklearn.datasets import make_circles
-
-
-def filter_x(point):
-    return point[0]
+from Persistence import Persistence
 
 
 def main(args):
@@ -34,7 +31,9 @@ def main(args):
 
     viz = Visualization(graph)
     viz.draw(36, 3000)
-
+    
+    persistence = Persistence(graph)
+    persistence.draw()
 
 if __name__ == '__main__':
     start_time = time.time()

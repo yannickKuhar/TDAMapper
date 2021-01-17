@@ -59,7 +59,7 @@ class Clustering:
 
         for i in range(len(labels)):
             groups[labels[i]].append(self.data[i])
-
+            
         return self.join_groups(groups)
 
     def get_labels(self, clusters):
