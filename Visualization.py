@@ -12,10 +12,10 @@ class Visualization:
 
         self.G = G
 
-    def draw(self):
+    def draw(self, font_size, node_size):
         options = {
-            "font_size": 36,
-            "node_size": 3000,
+            "font_size": font_size,
+            "node_size": node_size,
             "node_color": "white",
             "edgecolors": "black",
             "linewidths": 5,
